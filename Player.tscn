@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://bkxdgbd3ey2vu"]
+
+[ext_resource type="Script" path="res://player_controls.gd" id="1_obfhl"]
+[ext_resource type="PackedScene" uid="uid://cwf3k46lh4qtx" path="res://ball.tscn" id="2_30fga"]
+[ext_resource type="Script" path="res://camera.gd" id="2_mejns"]
+[ext_resource type="AudioStream" uid="uid://bp2mw4pt02g2x" path="res://sounds/burst_up.wav" id="3_j7cvp"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_eules"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_pae1d"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_ifq1k"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_mxtws"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0i0c6"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_reu6m"]
+
+[sub_resource type="Animation" id="Animation_0ensk"]
+resource_name = "charge"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pj5hi"]
+_data = {
+"charge": SubResource("Animation_0ensk")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmq7k"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(3.85046e-07, 0.525846, 0.625366, 1)
+disable_receive_shadows = true
+
+[sub_resource type="Resource" id="Resource_hn6ib"]
+script = ExtResource("6_ifq1k")
+duration = 0.0
+transition = 0
+ease = 0
+
+[sub_resource type="Resource" id="Resource_23urc"]
+script = ExtResource("8_mxtws")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 60.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_obfhl")
+ball_scene = ExtResource("2_30fga")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.75265, 1, 0)
+mesh = SubResource("CapsuleMesh_0i0c6")
+
+[node name="Front" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1.37765e-15, -3.15169e-08, -0.721022, -0.721022, -3.15169e-08, 0, -3.15169e-08, 0.721022, -3.15169e-08, 0, 0.816531, 0.275409)
+mesh = SubResource("PrismMesh_reu6m")
+
+[node name="Camera" type="Camera3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -5)
+fov = 60.0
+script = ExtResource("2_mejns")
+
+[node name="PhantomCameraHost" type="Node" parent="Camera"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_eules")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pj5hi")
+}
+
+[node name="GroundChecker" type="RayCast3D" parent="."]
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 0.552941, 0.552941, 1)
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.154626)
+
+[node name="ShootingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_j7cvp")
+
+[node name="TrajectoryVisualizer" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wmq7k")
+gi_mode = 0
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -5)
+script = ExtResource("5_pae1d")
+priority = 1
+tween_resource = SubResource("Resource_hn6ib")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_23urc")

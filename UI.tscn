@@ -1,0 +1,273 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0g45651r3fgm"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_e2lb5"]
+[ext_resource type="Script" path="res://charge.gd" id="2_1p5c3"]
+[ext_resource type="Script" path="res://cursor_trail.gd" id="2_mxhv7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sovn3"]
+blend_mode = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j4owt"]
+blend_mode = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_883bk"]
+size = Vector2(75, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt4ud"]
+size = Vector2(77, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f10g3"]
+size = Vector2(98, 34)
+
+[sub_resource type="GDScript" id="GDScript_esaub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yg1a8"]
+size = Vector2(4, 22)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e2lb5")
+curspeed = 300
+metadata/_edit_use_anchors_ = true
+
+[node name="ShootBar" type="ColorRect" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105035
+anchor_top = 0.87963
+anchor_right = 0.894965
+anchor_bottom = 0.950617
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.830335, 0.830335, 0.830335, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="ShootBar"]
+material = SubResource("CanvasItemMaterial_sovn3")
+clip_contents = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -12.0
+offset_right = -13.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.235294, 0.282353, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CursorTrail" type="ColorRect" parent="ShootBar/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00226245
+anchor_top = -1.01725e-05
+anchor_right = -0.00226245
+anchor_bottom = -1.01725e-05
+offset_left = 2.0
+offset_top = 0.000221252
+offset_right = 102.0
+offset_bottom = 49.7752
+rotation = -3.14159
+pivot_offset = Vector2(6.495, 18.3)
+color = Color(0, 0.831373, 0.882353, 1)
+script = ExtResource("2_mxhv7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Mid" type="ColorRect" parent="ShootBar/Background"]
+material = SubResource("CanvasItemMaterial_j4owt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 440.0
+offset_right = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.607843, 0.607843, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShootBar/Background"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000262432
+anchor_right = 0.111032
+anchor_bottom = 1.125
+offset_left = 1.76801
+offset_right = -0.151917
+offset_bottom = -3.0
+theme_override_constants/separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BlackSpace" type="Control" parent="ShootBar/Background/HBoxContainer"]
+editor_description = "Set X size as Shot Difficulty
+the higher the more difficult"
+clip_contents = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ShootBar/Background/HBoxContainer/BlackSpace"]
+layout_mode = 0
+offset_left = -15.0
+offset_right = 191.0
+offset_bottom = 35.0
+color = Color(0, 0, 0, 1)
+
+[node name="BlackSpaceArea" type="Area2D" parent="ShootBar/Background/HBoxContainer/BlackSpace" groups=["BLACK"]]
+
+[node name="BlackSpaceShape" type="CollisionShape2D" parent="ShootBar/Background/HBoxContainer/BlackSpace/BlackSpaceArea" groups=["BLACK"]]
+position = Vector2(22.7317, 16)
+shape = SubResource("RectangleShape2D_883bk")
+
+[node name="MagentaLeft" type="ColorRect" parent="ShootBar/Background/HBoxContainer" groups=["PINKLEFT"]]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0, 1, 1)
+metadata/_edit_group_ = true
+
+[node name="LeftPinkArea" type="Area2D" parent="ShootBar/Background/HBoxContainer/MagentaLeft" groups=["PINKLEFT"]]
+
+[node name="PinkShape" type="CollisionShape2D" parent="ShootBar/Background/HBoxContainer/MagentaLeft/LeftPinkArea" groups=["PINKLEFT"]]
+position = Vector2(14.9997, 15.5)
+shape = SubResource("RectangleShape2D_gt4ud")
+
+[node name="White" type="ColorRect" parent="ShootBar/Background/HBoxContainer" groups=["WHITEMIDDLE"]]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="WhiteArea" type="Area2D" parent="ShootBar/Background/HBoxContainer/White" groups=["WHITEMIDDLE"]]
+
+[node name="WhiteShape" type="CollisionShape2D" parent="ShootBar/Background/HBoxContainer/White/WhiteArea" groups=["WHITEMIDDLE"]]
+position = Vector2(19.4997, 16)
+shape = SubResource("RectangleShape2D_f10g3")
+
+[node name="MagentaRight" type="ColorRect" parent="ShootBar/Background/HBoxContainer" groups=["PINKRIGHT"]]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0, 1, 1)
+
+[node name="RightPinkArea" type="Area2D" parent="ShootBar/Background/HBoxContainer/MagentaRight" groups=["PINKRIGHT"]]
+
+[node name="PinkShape" type="CollisionShape2D" parent="ShootBar/Background/HBoxContainer/MagentaRight/RightPinkArea" groups=["PINKRIGHT"]]
+position = Vector2(38.4997, 17.5)
+shape = SubResource("RectangleShape2D_gt4ud")
+
+[node name="Cursor" type="ColorRect" parent="ShootBar" groups=["CURSOR"]]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.505
+offset_top = -19.9998
+offset_right = 33.505
+offset_bottom = 20.0002
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = SubResource("GDScript_esaub")
+metadata/_edit_use_anchors_ = true
+
+[node name="CursorInner" type="ColorRect" parent="ShootBar/Cursor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CursorArea" type="Area2D" parent="ShootBar/Cursor" groups=["CURSOR"]]
+position = Vector2(18.4947, 19.9998)
+monitoring = false
+
+[node name="CursorShape" type="CollisionShape2D" parent="ShootBar/Cursor/CursorArea" groups=["CURSOR"]]
+position = Vector2(-5, -1)
+shape = SubResource("RectangleShape2D_yg1a8")
+disabled = true
+
+[node name="Charge" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("2_1p5c3")
+
+[node name="Charge2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 275.0
+offset_bottom = 23.0
+script = ExtResource("2_1p5c3")
+
+[node name="Charge3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 220.0
+offset_right = 20.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1p5c3")
+
+[node name="Charge4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 87.0
+offset_right = 20.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1p5c3")
+
+[node name="Charge5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 182.0
+offset_top = 169.0
+offset_right = 222.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1p5c3")
+
+[connection signal="PANGYA" from="." to="." method="_on_pangya"]
+[connection signal="aiming" from="." to="." method="_on_aiming"]
+[connection signal="bar_depleted" from="." to="." method="_on_bar_depleted"]
+[connection signal="bar_depleted" from="." to="ShootBar/Background/CursorTrail" method="_on_ui_bar_depleted"]
+[connection signal="bar_full" from="." to="." method="_on_bar_full"]
+[connection signal="shot_imminent" from="." to="." method="_on_shot_imminent"]
+[connection signal="shot_imminent" from="." to="ShootBar/Background/CursorTrail" method="_on_ui_shot_imminent"]
+[connection signal="area_entered" from="ShootBar/Background/HBoxContainer/BlackSpace/BlackSpaceArea" to="." method="_on_black_space_area_area_entered"]
+[connection signal="area_entered" from="ShootBar/Background/HBoxContainer/MagentaLeft/LeftPinkArea" to="." method="_on_left_pink_area_area_entered"]
+[connection signal="area_entered" from="ShootBar/Background/HBoxContainer/White/WhiteArea" to="." method="_on_white_area_area_entered"]
+[connection signal="area_entered" from="ShootBar/Background/HBoxContainer/MagentaRight/RightPinkArea" to="." method="_on_right_pink_area_area_entered"]
