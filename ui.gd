@@ -7,8 +7,9 @@ extends Control
 @onready var curshape = $ShootBar/Cursor/CursorArea/CursorShape
 @export var player: Node
 @export var shot_power = 0
-var number_of_shot : int = 0
 
+var number_of_shot : int = 0
+var menu_visible = false
 
 var registered_shot = 0
 var is_charging = false
@@ -61,6 +62,13 @@ func _physics_process(delta):
 
 
 func _input(event):
+	
+	if Input.is_action_just_pressed("start") and menu_visible == false:
+		menu_visible = true
+		$"../MainMenu".visible = true
+	elif Input.is_action_just_pressed("start") and menu_visible == true:
+		menu_visible = false
+		$"../MainMenu".visible = false
 
 	if Input.is_action_just_pressed("action") and player.ready_to_aim == true and is_discharging == false and not is_aiming: # First check if can shoot to initiate
 		is_charging = true

@@ -12,8 +12,7 @@ func _process(delta):
 
 func _on_demo_level_button_pressed():
 	Global.selected_level = demolevel
-
-
+	get_tree().change_scene_to_file("res://Tutorial.tscn")
 func _on_quit_button_pressed():
 	$CenterContainer/VBoxContainer/HBoxContainer.visible = true
 
