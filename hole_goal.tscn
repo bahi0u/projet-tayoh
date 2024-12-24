@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw378kg5d0r8f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy8hg"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.654902, 1, 0.454902)
+disable_receive_shadows = true
+shadow_to_opacity = true
+billboard_mode = 2
+fixed_size = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bwhrc"]
+material = SubResource("StandardMaterial3D_oy8hg")
+flip_faces = true
+top_radius = 0.01
+bottom_radius = 0.01
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oaoou"]
+height = 0.244131
+radius = 0.100172
+
+[node name="HoleGoal" type="Node3D"]
+
+[node name="Beam" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0743749, 0)
+mesh = SubResource("CylinderMesh_bwhrc")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.160954, 0)
+shape = SubResource("CylinderShape3D_oaoou")

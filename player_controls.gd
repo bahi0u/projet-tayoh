@@ -7,9 +7,23 @@ extends Node3D
 @onready var spawn_point: Marker3D = $SpawnPoint
 @export var ball_scene: PackedScene
 
+
+
 var ball_power: float
 var is_aiming = false
 var ready_to_aim = true
+
+
+#Club definition
+var clubs = {
+	"Driver": { "up_vector": Vector3(0, 1.5, 0), "max_speed": 50.0 },
+	"Iron": { "up_vector": Vector3(0, 1.2, 0), "max_speed": 40.0 },
+	"Putter": { "up_vector": Vector3(0, 0, 0), "max_speed": 20.0 },
+}
+
+# Default selected club
+var current_club = "Driver"
+
 
 signal ball_shot
 signal player_moved
@@ -20,6 +34,15 @@ signal player_moved
 func _ready():
 	pass
 	
+	
+func switch_club(new_club_name):
+	if clubs.has(new_club_name):
+		current_club = new_club_name
+		print("Switched to:", current_club)
+	else:
+		print("Club not found:", new_club_name)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	draw_trajectory(Vector3(spawn_point.global_transform.basis.z + Vector3.UP * 0.5).normalized(), 30)
@@ -27,11 +50,8 @@ func _physics_process(delta):
 # Rotate the character and orient the camera
 # First rotate the player node then angle and move the camera node (child of player)
 	if Input.is_action_pressed("left") and is_aiming == false:
-		
 		self.rotation.y += 0.02
-		
-		
-		
+
 	if Input.is_action_pressed("right") and is_aiming == false:
 		self.rotation.y -= 0.02
 
@@ -54,39 +74,56 @@ func _physics_process(delta):
 		ready_to_aim = true
 
 func _input(event):
-	
+
+	if event.is_action_pressed("switch_to_driver"):
+		switch_club("Driver")
+	elif event.is_action_pressed("switch_to_iron"):
+		switch_club("Iron")
+	elif event.is_action_pressed("switch_to_putter"):
+		switch_club("Putter")
+
 	if Input.is_action_pressed("action") and ready_to_aim == false:
 		camera.rotation.x = 0
 		camera.position.y = cam_height
 
-
 func _on_ui_on_aiming():
 	is_aiming = true      
 
-
 func _on_ui_pangya(current_zone, shot_power):
+	$Spatial/Spika2/AnimationPlayer.play("ArmatureAction")
 	ball_power = shot_power
 	print(current_zone)
 	print(ball_power)
-	spawn_ball()
-	$ShootingSound.playing = true
 
 
 func spawn_ball():
 	if ball_scene:
 		var ball = ball_scene.instantiate()
 		ball.transform.origin = spawn_point.global_transform.origin #get spawnpoint origin
+		
+#		Get current Club properties
+		var club = clubs.get(current_club, null)
+		var up_vector = club["up_vector"]
+		var max_speed = club["max_speed"]
+
+#		Calculate launch direction
 		var forward_direction = spawn_point.global_transform.basis.z #get Forward axis
 		var upward_component = Vector3.UP # Add some upward motion
-		ball.launch_direction = (forward_direction + upward_component).normalized()
-		ball.launch_speed = ball_power # Adjust speed as needed
+		ball.launch_direction = (forward_direction + club.up_vector).normalized()
+		ball.launch_speed =  (max_speed * ball_power) / 100  # Adjust speed as needed
+		
+		#Set ball velocity
+		ball.linear_velocity = ball.launch_direction * ball.launch_speed
+		
+		# Add Ball to the scene
 		get_tree().current_scene.add_child(ball)
+		print("Ball launched with", current_club, "at speed:", ball.launch_speed)
 		ball_shot.emit(ball)
 		ball.timeout.connect(_on_timeout)
 
 
 
-func draw_trajectory(launch_direction: Vector3, ball_power: float = 100, gravity: float = -9.8):
+func draw_trajectory(launch_direction: Vector3, ball_power: float = 1000, gravity: float = -9.8): #default ( vector3, 100, -9.8
 	if not trajectory_visualizer:
 		return
 	# Calculate trajectory points
@@ -114,5 +151,11 @@ func draw_trajectory(launch_direction: Vector3, ball_power: float = 100, gravity
 
 func _on_timeout(ball_position):
 	print("TIMEOUT")
+	print(self.global_position - ball_position)
 	self.position = ball_position
 	player_moved.emit()
+
+
+func _on_animation_player_animation_finished(ArmatureAction):
+	spawn_ball()
+	$ShootingSound.playing = true

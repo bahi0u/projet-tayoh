@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dao4uul330wpl"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_md2qa"]
+[ext_resource type="PackedScene" uid="uid://bqpkadyx7bhym" path="res://Tutorial.tscn" id="2_oj16w"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_md2qa")
+demolevel = ExtResource("2_oj16w")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DemoLevelButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "DEMO_LEVEL"
+
+[node name="HubLevelButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "HUB_LEVEL"
+
+[node name="OptionButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPTION"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "YES"
+
+[node name="QuitButton3" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "NO"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/DemoLevelButton" to="." method="_on_demo_level_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/QuitButton2" to="." method="_on_quit_button_2_pressed"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/HBoxContainer/QuitButton3" to="." method="_on_quit_button_3_button_down"]

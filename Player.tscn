@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkxdgbd3ey2vu"]
+[gd_scene load_steps=17 format=3 uid="uid://bkxdgbd3ey2vu"]
 
 [ext_resource type="Script" path="res://player_controls.gd" id="1_obfhl"]
 [ext_resource type="PackedScene" uid="uid://cwf3k46lh4qtx" path="res://ball.tscn" id="2_30fga"]
 [ext_resource type="Script" path="res://camera.gd" id="2_mejns"]
+[ext_resource type="PackedScene" uid="uid://n8qpccxw38xa" path="res://spika_2.tscn" id="3_52nbs"]
 [ext_resource type="AudioStream" uid="uid://bp2mw4pt02g2x" path="res://sounds/burst_up.wav" id="3_j7cvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_eules"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_pae1d"]
@@ -52,6 +53,36 @@ far = 4000.0
 script = ExtResource("1_obfhl")
 ball_scene = ExtResource("2_30fga")
 
+[node name="Spatial" type="Node3D" parent="."]
+
+[node name="Spika2" parent="Spatial" instance=ExtResource("3_52nbs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.785597, 0, 0.0844188)
+
+[node name="Skeleton3D" parent="Spatial/Spika2/Spika/Spika_arm" index="0"]
+bones/22/rotation = Quaternion(0.941253, -0.0581779, 0.249091, -0.22048)
+bones/23/rotation = Quaternion(-0.517429, -0.439282, -0.532003, 0.506233)
+bones/24/rotation = Quaternion(-0.282991, 0.00711628, -0.0205358, 0.958876)
+bones/25/rotation = Quaternion(0.0363133, 0.000391322, -0.0144946, 0.999235)
+bones/48/rotation = Quaternion(0.542411, -0.495269, 0.505496, 0.452739)
+bones/49/rotation = Quaternion(0.294864, -0.000438807, -0.00181423, 0.955537)
+bones/54/rotation = Quaternion(0.903143, 0.0226347, -0.0107421, -0.428609)
+bones/63/rotation = Quaternion(0.895854, 0.00453433, -0.00224891, -0.44432)
+bones/67/rotation = Quaternion(0.888605, 0.0176021, -0.0090773, -0.458245)
+bones/72/rotation = Quaternion(0.617719, -0.344127, 0.586621, -0.39481)
+bones/77/rotation = Quaternion(0.044201, -0.00662261, 0.00646925, 0.99898)
+bones/78/rotation = Quaternion(-0.473593, 0.0225252, -0.0163972, 0.880303)
+bones/79/rotation = Quaternion(0.900639, 0.012017, 0.012017, -0.434235)
+bones/80/rotation = Quaternion(-0.0387562, 0.000267208, -0.000398984, 0.999249)
+bones/82/rotation = Quaternion(-0.477253, -0.0228155, 0.0166029, 0.878313)
+bones/83/rotation = Quaternion(0.898971, -0.0122233, -0.0122233, -0.437668)
+
+[node name="Skeleton3D" parent="Spatial/Spika2/Armature" index="0"]
+bones/0/position = Vector3(0.162587, 1.25681, -0.317278)
+bones/0/rotation = Quaternion(0.343492, -0.0691008, 0.446914, -0.823107)
+
+[node name="Club" parent="Spatial/Spika2/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.0349682, -0.0413149, -0.0262403, -0.0474114, -0.0205877, -0.0307661, 0.0121504, 0.0385678, -0.0445325, 0.302619, 1.32867, -0.446532)
+
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.75265, 1, 0)
 mesh = SubResource("CapsuleMesh_0i0c6")
@@ -62,7 +93,7 @@ mesh = SubResource("PrismMesh_reu6m")
 
 [node name="Camera" type="Camera3D" parent="."]
 physics_interpolation_mode = 2
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -5)
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -2.10407)
 fov = 60.0
 script = ExtResource("2_mejns")
 
@@ -91,9 +122,13 @@ material_override = SubResource("StandardMaterial3D_wmq7k")
 gi_mode = 0
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -5)
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -2.10407)
 script = ExtResource("5_pae1d")
 priority = 1
 tween_resource = SubResource("Resource_hn6ib")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_23urc")
+
+[connection signal="animation_finished" from="Spatial/Spika2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Spatial/Spika2"]

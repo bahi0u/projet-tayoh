@@ -7,6 +7,8 @@ extends Control
 @onready var curshape = $ShootBar/Cursor/CursorArea/CursorShape
 @export var player: Node
 @export var shot_power = 0
+
+
 var registered_shot = 0
 var is_charging = false
 var is_discharging = false
@@ -47,7 +49,7 @@ func _physics_process(delta):
 		aiming.emit()
 		cursor_position -= curspeed * delta
 		cursor.position.x = cursor_position
-		if cursor.position.x <= 7:
+		if cursor.position.x <= 1:
 			bar_depleted.emit() 
 		
 	if player.ready_to_aim == false: #CHANGE SHOOTBAR OPACITY WHEN CAM IS MOVED 
@@ -67,10 +69,11 @@ func _input(event):
 			curshape.disabled = false
 	if Input.is_action_just_pressed("action") and shot_power > 0:
 		shot_imminent.emit()
-	else:
-		return
+
 	if Input.is_action_just_pressed("action") and current_zone > -1:
 		PANGYA.emit(current_zone, shot_power)
+	else:
+		is_aiming = false
 	
 func get_travel_value() -> float:
 	var value = cursor_position / bar.size.x  # Value as a ratio of traveled distance to total bar length
@@ -111,18 +114,14 @@ func _on_right_pink_area_area_entered(area):
 
 func _on_shot_imminent():
 	pass
-
-
+	
 func _on_pangya(current_zone, shot_power):
 	is_charging = false
 	is_discharging = false
 	cursor_position = stopped_position
 
-
 func _on_player_ball_shot(ball):
 	bar_depleted.emit()
 	
-	
 func _on_player_moved():
 	is_aiming = false
-	

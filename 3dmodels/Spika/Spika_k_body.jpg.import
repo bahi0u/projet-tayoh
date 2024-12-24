@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byobuxmys06s5"
-path.s3tc="res://.godot/imported/testBox_dark.png-92a6e9b951a4a427a4c412a75b04c239.s3tc.ctex"
+uid="uid://dwpdd1y7r8kuf"
+path.s3tc="res://.godot/imported/Spika_k_body.jpg-f6a54d7ed6ee591d66b985fe37d659a6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "30e969696ff5e0791418ffd92dd7b755"
+"md5": "3fcb149352c647c0884a78f4d7ef24b5"
 }
 
 [deps]
 
-source_file="res://3dmodels/testBox_dark.png"
-dest_files=["res://.godot/imported/testBox_dark.png-92a6e9b951a4a427a4c412a75b04c239.s3tc.ctex"]
+source_file="res://3dmodels/Spika/Spika_k_body.jpg"
+dest_files=["res://.godot/imported/Spika_k_body.jpg-f6a54d7ed6ee591d66b985fe37d659a6.s3tc.ctex"]
 
 [params]
 
