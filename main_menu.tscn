@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dao4uul330wpl"]
+[gd_scene load_steps=2 format=3 uid="uid://dao4uul330wpl"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_md2qa"]
-[ext_resource type="PackedScene" uid="uid://bqpkadyx7bhym" path="res://Tutorial.tscn" id="2_oj16w"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_md2qa")
-demolevel = ExtResource("2_oj16w")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

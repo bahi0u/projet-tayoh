@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://cl4m40sx4lfn0" path="res://DEV_TEXTURE.tres" id="7_grvr7"]
 [ext_resource type="Script" path="res://camera_manager.gd" id="7_ql5mo"]
 [ext_resource type="PackedScene" uid="uid://bw378kg5d0r8f" path="res://hole_goal.tscn" id="8_qf5ra"]
-[ext_resource type="PackedScene" uid="uid://dao4uul330wpl" path="res://main_menu.tscn" id="9_fewbn"]
+[ext_resource type="PackedScene" uid="uid://dao4uul330wpl" path="res://main_menu.tscn" id="9_1ev82"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cqh7r"]
 sky_top_color = Color(0.27897, 0.617334, 1, 1)
@@ -86,8 +86,6 @@ point_count = 4
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_uqrdl")
-
-[node name="Node" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_yenv3")]
 transform = Transform3D(-0.531694, 0, -0.846936, 0, 1, 0, 0.846936, 0, -0.531694, 128.589, -0.5, 192.906)
@@ -193,7 +191,7 @@ shape = SubResource("BoxShape3D_a0cjo")
 transform = Transform3D(0.942653, 0, -0.333774, 0, 1, 0, 0.333774, 0, 0.942653, 81.9116, 105.736, 239.591)
 curve = SubResource("Curve3D_nfxio")
 
-[node name="MainMenu" parent="." instance=ExtResource("9_fewbn")]
+[node name="MainMenu" parent="." instance=ExtResource("9_1ev82")]
 visible = false
 
 [connection signal="ball_shot" from="Player" to="UI" method="_on_player_ball_shot"]

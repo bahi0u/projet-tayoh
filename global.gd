@@ -1,9 +1,4 @@
 extends Node
-
-var selected_level: PackedScene
-
-var menu_shown: bool = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

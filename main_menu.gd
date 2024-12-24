@@ -1,18 +1,16 @@
 extends Control
 
-@export var demolevel: PackedScene
+@onready var map = "res://Tutorial.tscn"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CenterContainer/VBoxContainer/HBoxContainer.visible = false
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _on_demo_level_button_pressed():
-	Global.selected_level = demolevel
-	get_tree().change_scene_to_file("res://Tutorial.tscn")
+	get_tree().change_scene_to_file(map)
 func _on_quit_button_pressed():
 	$CenterContainer/VBoxContainer/HBoxContainer.visible = true
 
