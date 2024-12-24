@@ -6,6 +6,7 @@ extends Node3D
 @onready var trajectory_visualizer : MeshInstance3D = $TrajectoryVisualizer
 @onready var spawn_point: Marker3D = $SpawnPoint
 @export var ball_scene: PackedScene
+@onready var goal: Node3D = $"../HoleGoal"
 
 
 
@@ -27,6 +28,7 @@ var current_club = "Driver"
 
 signal ball_shot
 signal player_moved
+signal club_changed
 
 # cam_height is the initial height of the camera, as a variable in case a character needs to be filmed higher
 
@@ -36,8 +38,10 @@ func _ready():
 	
 	
 func switch_club(new_club_name):
+
 	if clubs.has(new_club_name):
 		current_club = new_club_name
+		club_changed.emit(current_club)
 		print("Switched to:", current_club)
 	else:
 		print("Club not found:", new_club_name)
@@ -154,6 +158,7 @@ func _on_timeout(ball_position):
 	print(self.global_position - ball_position)
 	self.position = ball_position
 	player_moved.emit()
+	self.look_at(self.position * goal.position)
 
 
 func _on_animation_player_animation_finished(ArmatureAction):

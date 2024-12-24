@@ -83,7 +83,7 @@ script = ExtResource("1_uqrdl")
 [node name="Node" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_yenv3")]
-transform = Transform3D(-0.531694, 0, -0.846936, 0, 1, 0, 0.846936, 0, -0.531694, 128.589, 0.308998, 195.411)
+transform = Transform3D(-0.531694, 0, -0.846936, 0, 1, 0, 0.846936, 0, -0.531694, 128.589, 0.308998, 28.1364)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dql7x")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkxdgbd3ey2vu"]
+[gd_scene load_steps=20 format=3 uid="uid://bkxdgbd3ey2vu"]
 
 [ext_resource type="Script" path="res://player_controls.gd" id="1_obfhl"]
 [ext_resource type="PackedScene" uid="uid://cwf3k46lh4qtx" path="res://ball.tscn" id="2_30fga"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_pae1d"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_ifq1k"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_mxtws"]
+[ext_resource type="Script" path="res://help.gd" id="10_xevij"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0i0c6"]
 
@@ -49,6 +50,12 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2w3ty"]
+shading_mode = 0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tka0k"]
+material = SubResource("StandardMaterial3D_2w3ty")
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_obfhl")
 ball_scene = ExtResource("2_30fga")
@@ -83,11 +90,11 @@ bones/0/rotation = Quaternion(0.343492, -0.0691008, 0.446914, -0.823107)
 [node name="Club" parent="Spatial/Spika2/Armature/Skeleton3D" index="0"]
 transform = Transform3D(0.0349682, -0.0413149, -0.0262403, -0.0474114, -0.0205877, -0.0307661, 0.0121504, 0.0385678, -0.0445325, 0.302619, 1.32867, -0.446532)
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Caddie" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.75265, 1, 0)
 mesh = SubResource("CapsuleMesh_0i0c6")
 
-[node name="Front" type="MeshInstance3D" parent="Mesh"]
+[node name="Front" type="MeshInstance3D" parent="Caddie"]
 transform = Transform3D(1.37765e-15, -3.15169e-08, -0.721022, -0.721022, -3.15169e-08, 0, -3.15169e-08, 0.721022, -3.15169e-08, 0, 0.816531, 0.275409)
 mesh = SubResource("PrismMesh_reu6m")
 
@@ -129,6 +136,12 @@ tween_resource = SubResource("Resource_hn6ib")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_23urc")
 
+[node name="Help" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 128)
+mesh = SubResource("CapsuleMesh_tka0k")
+script = ExtResource("10_xevij")
+
+[connection signal="club_changed" from="." to="Help" method="_on_player_club_changed"]
 [connection signal="animation_finished" from="Spatial/Spika2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="Spatial/Spika2"]

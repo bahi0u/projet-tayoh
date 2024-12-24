@@ -4,5 +4,8 @@
 
 [node name="Spika2" instance=ExtResource("1_8ej8g")]
 
+[node name="Spika" parent="." index="0"]
+visible = false
+
 [node name="Club" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(0.0601518, 8.827e-11, 2.77351e-11, 2.05311e-10, 0.0601519, 2.32831e-10, -2.57341e-11, -1.16415e-10, 0.0601519, -1.86265e-09, -5.96046e-08, 7.21775e-09)

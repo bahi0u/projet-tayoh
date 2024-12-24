@@ -7,6 +7,7 @@ extends Control
 @onready var curshape = $ShootBar/Cursor/CursorArea/CursorShape
 @export var player: Node
 @export var shot_power = 0
+var number_of_shot : int = 0
 
 
 var registered_shot = 0
@@ -32,6 +33,7 @@ signal PANGYA
 func _ready():
 	cursor_position = cursor_reset
 	player.player_moved.connect(_on_player_moved)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if cursor_stop:
@@ -118,6 +120,7 @@ func _on_shot_imminent():
 func _on_pangya(current_zone, shot_power):
 	is_charging = false
 	is_discharging = false
+	number_of_shot += 1
 	cursor_position = stopped_position
 
 func _on_player_ball_shot(ball):
