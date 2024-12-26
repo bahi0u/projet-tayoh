@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="160.60286mm"
+   height="146.10266mm"
+   viewBox="0 0 160.60286 146.10266"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient14">
+      <stop
+         style="stop-color:#69e1ed;stop-opacity:1;"
+         offset="0"
+         id="stop14" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1"
+         id="stop15" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient3"
+       id="linearGradient4"
+       x1="1882.0236"
+       y1="542.84106"
+       x2="2042.6263"
+       y2="542.84106"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient14"
+       id="linearGradient15"
+       x1="1755.2546"
+       y1="612.37457"
+       x2="1755.2546"
+       y2="469.71506"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient3"
+       id="linearGradient5"
+       gradientUnits="userSpaceOnUse"
+       x1="1882.0236"
+       y1="542.84106"
+       x2="2042.6263"
+       y2="542.84106" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-15.54746,-33.20841)">
+    <g
+       id="g2-9"
+       transform="translate(-1866.476,-436.58134)"
+       style="fill:url(#linearGradient4)">
+      <g
+         id="g3"
+         style="fill:url(#linearGradient5)">
+        <path
+           id="path46-2"
+           style="-inkscape-font-specification:'Year 2000 Replicant';fill:url(#linearGradient15);fill-opacity:1;stroke:#24a2a9;stroke-width:6;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+           d="m 1692.9581,472.78957 -0.5695,2.78329 h -14.551 l -5.6943,26.69915 h 14.9309 c 0,0 -14.353,24.6964 -7.1489,33.59484 6.343,7.83483 30.2416,0 30.2416,0 l 3.2266,-15.12104 c 0,0 -12.0985,3.96584 -15.3107,0 -3.9623,-4.89193 3.9228,-18.4738 3.9228,-18.4738 h 15.3107 l 2.6572,-12.59045 h -25.4966 l 3.6059,-16.89199 z m 7.0864,0 -3.1636,14.93087 h 10.5657 l 3.1631,-14.93087 z m 12.9692,0 -3.1631,14.93087 h 10.5658 l 3.1631,-14.93087 z m 13.1605,0.12195 -2.5937,13.29066 h 10.3425 z m 30.7345,6.0508 c -5.5159,0.009 -10.9957,0.0274 -10.9957,0.0274 l -2.0247,9.61646 h -22.4596 l -3.037,14.42496 h 29.4194 l -0.5065,2.21434 h -29.3558 l -5.8208,27.52131 43.7177,-0.0636 c 0,0 12.6283,-53.62371 12.2742,-53.71351 -0.1432,-0.0364 -5.6953,-0.0365 -11.2112,-0.0274 z m 27.0384,1.39526 -6.5101,30.66852 h 17.2319 l 15.5182,-30.66852 z m -56.6981,36.08617 h 17.7147 l -0.569,2.59416 h -17.7152 z m 57.3796,1.65138 c -3.4402,-0.01 -7.0988,0.77331 -9.0776,2.06899 -3.5626,2.33285 -5.89,8.0192 -3.051,10.94677 2.968,3.06068 12.645,2.43893 16.3696,0 3.5625,-2.33285 5.8899,-8.01921 3.051,-10.94677 -1.3913,-1.4347 -4.2567,-2.06044 -7.292,-2.06899 z m 3.9149,27.35667 c -5.362,-0.13599 -12.0008,2.03967 -12.0008,2.03967 l -13.4762,63.64676 c 0,0 13.173,3.72958 17.7782,0 4.574,-3.70429 -0.9044,-13.56753 3.6696,-17.27182 2.2289,-1.80508 6.7525,-2.19041 8.6041,0 3.8432,4.54659 -7.4228,13.6554 -2.9735,17.61082 3.2188,2.86146 9.442,-0.49871 12.4003,-3.62872 12.4179,-13.13864 23.5179,-38.67217 12.2737,-52.8283 -2.7939,-3.51739 -9.9859,-2.82826 -13.4757,0 -6.5649,5.32046 1.3136,19.48061 -5.2513,24.80107 -2.2282,1.80583 -6.798,2.22789 -8.6042,0 -6.9366,-8.55593 13.7693,-23.77388 6.8327,-32.32981 -1.1663,-1.43852 -3.3395,-1.97786 -5.7769,-2.03967 z m -110.508,2.10323 -6.1371,28.97601 h 30.2421 l 3.0365,-14.29835 h -14.2984 l 3.1001,-14.67766 z m 33.5313,0 -6.8957,32.26625 H 1670.76 l -5.8839,27.96418 h 33.0884 l -0.6961,3.22616 h 16.3231 l 13.4761,-63.45659 z m 36.5688,0.3793 -21.764,15.05748 h 18.6004 z m 2.0242,0 -3.1631,15.05748 h 10.6918 l 3.1636,-15.05748 z m 13.0333,0 -3.1636,15.05748 h 10.6923 l 3.1631,-15.05748 z m -37.2644,17.01912 -9.8066,46.12173 h 44.3502 l 9.8067,-46.12173 z m 9.68,14.29835 h 18.9797 l -4.3651,20.56154 h -18.9802 z"
+           transform="translate(220.14719)" />
+      </g>
+    </g>
+  </g>
+</svg>
