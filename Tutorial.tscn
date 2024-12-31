@@ -194,6 +194,8 @@ curve = SubResource("Curve3D_nfxio")
 [node name="MainMenu" parent="." instance=ExtResource("9_1ev82")]
 visible = false
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="ball_shot" from="Player" to="UI" method="_on_player_ball_shot"]
 [connection signal="ball_shot" from="Player" to="CameraManager" method="_on_player_ball_shot"]
 [connection signal="player_moved" from="Player" to="CameraManager" method="_on_player_player_moved"]

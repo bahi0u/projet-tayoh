@@ -5,6 +5,7 @@ extends Label
 @onready var shots = $"../Shots"
 @onready var club = $"../Club"
 var default_club = "Driver"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ui.player.club_changed.connect(_on_club_changed)
