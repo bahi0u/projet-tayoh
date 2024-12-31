@@ -7,14 +7,14 @@ extends Node3D
 @onready var spawn_point: Marker3D = $SpawnPoint
 @export var ball_scene: PackedScene
 @onready var goal: Node3D = $"../HoleGoal"
-@onready var anim = $Spatial/kiki_2/AnimationPlayer
+@onready var anim = $Spatial/kiki1/AnimationPlayer
 
 
 
 var ball_power: float
 var is_aiming = false
 var ready_to_aim = true
-
+var moving_feet = false
 
 #Club definition
 var clubs = {
@@ -49,17 +49,17 @@ func switch_club(new_club_name):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	draw_trajectory(Vector3(spawn_point.global_transform.basis.z + Vector3.UP * 0.5).normalized(), 30)
+	#draw_trajectory(Vector3(spawn_point.global_transform.basis.z + Vector3.UP * 0.5).normalized(), 30)
 
 # Rotate the character and orient the camera
 # First rotate the player node then angle and move the camera node (child of player)
 	if Input.is_action_pressed("left") and is_aiming == false:
 		self.rotation.y += 0.02
-		anim.play("SideStep")
+		moving_feet = true
 
 	if Input.is_action_pressed("right") and is_aiming == false:
 		self.rotation.y -= 0.02
-		anim.play("SideStep")
+		moving_feet = true
 
 
 	if Input.is_action_pressed("up") and is_aiming == false:
@@ -77,8 +77,10 @@ func _physics_process(delta):
 # Check if cam is in default orientation before shooting
 	if camera.position.y != cam_height or camera.rotation.x != 0:
 		ready_to_aim = false
+		
 	else:
 		ready_to_aim = true
+		
 
 func _input(event):
 
@@ -89,17 +91,26 @@ func _input(event):
 	elif event.is_action_pressed("switch_to_putter"):
 		switch_club("Putter")
 
+	elif event.is_action_pressed("left"):
+		anim.play("SideStep")
+	elif event.is_action_pressed("right"):
+		anim.play("SideStep")
+	if Input.is_action_just_released("left"):
+		anim.stop(false)
+		anim.play("Idle")
+	if Input.is_action_just_released("right"):
+		anim.stop(false)
+		anim.play("Idle")
 	if Input.is_action_pressed("action") and ready_to_aim == false:
 		camera.rotation.x = 0
 		camera.position.y = cam_height
-
+		
 func _on_ui_on_aiming():
 	is_aiming = true
 	ready_to_aim = false
 
 func _on_ui_pangya(current_zone, shot_power):
-	$Spatial/kiki_2/AnimationPlayer.play("Shot")
-	#spawn_ball()
+	anim.play("Shot")
 	ball_power = shot_power
 	print(current_zone)
 	print(ball_power)
@@ -132,29 +143,29 @@ func spawn_ball():
 
 
 
-func draw_trajectory(launch_direction: Vector3, ball_power: float = 1000, gravity: float = -9.8): #default ( vector3, 100, -9.8
-	if not trajectory_visualizer:
-		return
-	# Calculate trajectory points
-	var points = []
-	var position = Vector3.ZERO
-	var velocity = launch_direction.normalized() * ball_power
-	var time_step = 0.2  # Smaller value = smoother curve
-
-	for i in range(50):  # Simulate for 50 steps	
-		position += velocity * time_step
-		velocity.y += gravity * time_step
-		points.append(position)
-		if position.y < 0:
-			break  # Stop when the arc hits the ground
-# Generate the trajectory mesh
-	var surface_tool = SurfaceTool.new()
-	surface_tool.begin(Mesh.PRIMITIVE_LINE_STRIP)
-	for point in points:
-		surface_tool.add_vertex(point)
-# Finish the mesh and assign it to the visualizer
-	var mesh = surface_tool.commit()
-	trajectory_visualizer.mesh = mesh
+#func draw_trajectory(launch_direction: Vector3, ball_power: float = 1000, gravity: float = -9.8): #default ( vector3, 100, -9.8
+	#if not trajectory_visualizer:
+		#return
+	## Calculate trajectory points
+	#var points = []
+	#var position = Vector3.ZERO
+	#var velocity = launch_direction.normalized() * ball_power
+	#var time_step = 0.2  # Smaller value = smoother curve
+#
+	#for i in range(50):  # Simulate for 50 steps	
+		#position += velocity * time_step
+		#velocity.y += gravity * time_step
+		#points.append(position)
+		#if position.y < 0:
+			#break  # Stop when the arc hits the ground
+## Generate the trajectory mesh
+	#var surface_tool = SurfaceTool.new()
+	#surface_tool.begin(Mesh.PRIMITIVE_LINE_STRIP)
+	#for point in points:
+		#surface_tool.add_vertex(point)
+## Finish the mesh and assign it to the visualizer
+	#var mesh = surface_tool.commit()
+	#trajectory_visualizer.mesh = mesh
 
 
 

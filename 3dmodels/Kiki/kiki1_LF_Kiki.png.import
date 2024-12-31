@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cygv17sto1v76"
-path.s3tc="res://.godot/imported/kiki_2_LF_Kiki.png-40c48f7a3cb4399366c296a56ce2e329.s3tc.ctex"
+uid="uid://cj4t24uayjkdo"
+path.s3tc="res://.godot/imported/kiki1_LF_Kiki.png-50ed59ec8b7a8b4732f96846b3bbe436.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://3dmodels/Kiki/kiki_2_LF_Kiki.png"
-dest_files=["res://.godot/imported/kiki_2_LF_Kiki.png-40c48f7a3cb4399366c296a56ce2e329.s3tc.ctex"]
+source_file="res://3dmodels/Kiki/kiki1_LF_Kiki.png"
+dest_files=["res://.godot/imported/kiki1_LF_Kiki.png-50ed59ec8b7a8b4732f96846b3bbe436.s3tc.ctex"]
 
 [params]
 

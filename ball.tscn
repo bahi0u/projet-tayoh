@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwf3k46lh4qtx"]
+[gd_scene load_steps=13 format=3 uid="uid://cwf3k46lh4qtx"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_ddjtr"]
+[ext_resource type="Shader" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="2_l0qi5"]
+[ext_resource type="Shader" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="3_dac37"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="4_ylvwo"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://addons/GPUTrail-main/defaults/curve.tres" id="5_vi0mw"]
+[ext_resource type="Script" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="6_tljrf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rtrnl"]
 bounce = 0.1
@@ -11,6 +16,22 @@ radius = 0.100903
 [sub_resource type="SphereMesh" id="SphereMesh_1sqci"]
 radius = 0.1
 height = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvb8o"]
+shader = ExtResource("2_l0qi5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtqgs"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_dac37")
+shader_parameter/uv_offset = Vector2(0.0183525, 0)
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 4
+shader_parameter/color_ramp = ExtResource("4_ylvwo")
+shader_parameter/curve = ExtResource("5_vi0mw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7mg8n"]
+material = SubResource("ShaderMaterial_jtqgs")
 
 [node name="Ball" type="RigidBody3D" groups=["BALL"]]
 physics_material_override = SubResource("PhysicsMaterial_rtrnl")
@@ -30,6 +51,22 @@ wait_time = 2.0
 wait_time = 40.0
 one_shot = true
 autostart = true
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+amount = 100
+lifetime = 100.0
+explosiveness = 1.0
+fixed_fps = 59
+process_material = SubResource("ShaderMaterial_cvb8o")
+draw_pass_1 = SubResource("QuadMesh_7mg8n")
+script = ExtResource("6_tljrf")
+length_seconds = 1.69492
+color_ramp = ExtResource("4_ylvwo")
+curve = ExtResource("5_vi0mw")
+billboard = true
+dewiggle = false
+clip_overlaps = false
+_defaults_have_been_set = true
 
 [connection signal="ball_stopped" from="." to="." method="_on_ball_stopped"]
 [connection signal="timeout" from="FinishedMovingTimer" to="." method="_on_finished_moving_timer_timeout"]

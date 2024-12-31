@@ -22,7 +22,7 @@ Global="*res://global.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/GPUTrail-main/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [global_group]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqomcaqt2l3dl"
-path="res://.godot/imported/kiki_2.glb-be00d9ecaa1cc7d6bc1ef49d8439b11d.scn"
+uid="uid://b7xof08vefjrm"
+path="res://.godot/imported/kiki1.glb-83ef1ac8391a4e9d9c1fa1a56e0939ce.scn"
 
 [deps]
 
-source_file="res://3dmodels/Kiki/kiki_2.glb"
-dest_files=["res://.godot/imported/kiki_2.glb-be00d9ecaa1cc7d6bc1ef49d8439b11d.scn"]
+source_file="res://3dmodels/Kiki/kiki1.glb"
+dest_files=["res://.godot/imported/kiki1.glb-83ef1ac8391a4e9d9c1fa1a56e0939ce.scn"]
 
 [params]
 
