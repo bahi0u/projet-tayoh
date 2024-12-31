@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://big06lj0bgf0r"
-path="res://.godot/imported/Spika.glb-c258958930d593bc91b039ff69d13271.scn"
+uid="uid://bqomcaqt2l3dl"
+path="res://.godot/imported/kiki_2.glb-be00d9ecaa1cc7d6bc1ef49d8439b11d.scn"
 
 [deps]
 
-source_file="res://3dmodels/Spika/Spika.glb"
-dest_files=["res://.godot/imported/Spika.glb-c258958930d593bc91b039ff69d13271.scn"]
+source_file="res://3dmodels/Kiki/kiki_2.glb"
+dest_files=["res://.godot/imported/kiki_2.glb-be00d9ecaa1cc7d6bc1ef49d8439b11d.scn"]
 
 [params]
 

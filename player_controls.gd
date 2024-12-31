@@ -7,6 +7,7 @@ extends Node3D
 @onready var spawn_point: Marker3D = $SpawnPoint
 @export var ball_scene: PackedScene
 @onready var goal: Node3D = $"../HoleGoal"
+@onready var anim = $Spatial/kiki_2/AnimationPlayer
 
 
 
@@ -29,14 +30,13 @@ var current_club = "Driver"
 signal ball_shot
 signal player_moved
 signal club_changed
-
+signal Anim_Hit
 # cam_height is the initial height of the camera, as a variable in case a character needs to be filmed higher
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	
-	
+	anim.play("Idle")
+
 func switch_club(new_club_name):
 
 	if clubs.has(new_club_name):
@@ -55,9 +55,12 @@ func _physics_process(delta):
 # First rotate the player node then angle and move the camera node (child of player)
 	if Input.is_action_pressed("left") and is_aiming == false:
 		self.rotation.y += 0.02
+		anim.play("SideStep")
 
 	if Input.is_action_pressed("right") and is_aiming == false:
 		self.rotation.y -= 0.02
+		anim.play("SideStep")
+
 
 	if Input.is_action_pressed("up") and is_aiming == false:
 		camera.rotation.x -= 0.0089
@@ -91,10 +94,12 @@ func _input(event):
 		camera.position.y = cam_height
 
 func _on_ui_on_aiming():
-	is_aiming = true      
+	is_aiming = true
+	ready_to_aim = false
 
 func _on_ui_pangya(current_zone, shot_power):
-	$Spatial/Spika2/AnimationPlayer.play("ArmatureAction")
+	$Spatial/kiki_2/AnimationPlayer.play("Shot")
+	#spawn_ball()
 	ball_power = shot_power
 	print(current_zone)
 	print(ball_power)
@@ -161,6 +166,10 @@ func _on_timeout(ball_position):
 	self.look_at(self.position * goal.position)
 
 
-func _on_animation_player_animation_finished(ArmatureAction):
+func _on_animation_player_animation_finished(Shot):
+	anim.play("Idle")
+
+
+func _on_anim_hit():
 	spawn_ball()
 	$ShootingSound.playing = true
