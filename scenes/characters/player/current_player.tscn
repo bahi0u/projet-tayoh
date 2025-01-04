@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://0c6xpv6two1p"]
+
+[ext_resource type="Script" path="res://scripts/characters/player/current_player.gd" id="1_5vt0o"]
+[ext_resource type="Script" path="res://scripts/characters/player/input_handler.gd" id="2_ef2oe"]
+[ext_resource type="Script" path="res://scripts/characters/player/player_mesh.gd" id="2_tsfkb"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_p5pvm"]
+[ext_resource type="PackedScene" uid="uid://b7xof08vefjrm" path="res://3dmodels/Kiki/kiki1.glb" id="4_h22x5"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_c7qx6"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_cbd7d"]
+
+[sub_resource type="Resource" id="Resource_swlbl"]
+script = ExtResource("7_cbd7d")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="CurrentPlayer" type="CharacterBody3D"]
+script = ExtResource("1_5vt0o")
+
+[node name="PlayerStats" type="Node" parent="."]
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_ef2oe")
+cam_speed = null
+
+[node name="PlayerProfile" type="Node" parent="."]
+
+[node name="PlayerMesh" type="Node3D" parent="."]
+script = ExtResource("2_tsfkb")
+current_mesh = ExtResource("4_h22x5")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+current = true
+fov = 60.0
+
+[node name="PhantomCameraHost" type="Node" parent="PlayerCamera"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_p5pvm")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+script = ExtResource("6_c7qx6")
+tween_resource = SubResource("Resource_swlbl")

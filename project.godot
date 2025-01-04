@@ -19,6 +19,7 @@ config/icon="res://Logo.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Global="*res://global.gd"
+GameManager="*res://utils/game_manager.gd"
 
 [editor_plugins]
 
