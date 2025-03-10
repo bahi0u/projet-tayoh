@@ -1,15 +1,15 @@
 [gd_scene load_steps=28 format=4 uid="uid://bkxdgbd3ey2vu"]
 
-[ext_resource type="Script" path="res://player_controls.gd" id="1_obfhl"]
+[ext_resource type="Script" uid="uid://4g7pgieexg1c" path="res://player_controls.gd" id="1_obfhl"]
 [ext_resource type="PackedScene" uid="uid://cwf3k46lh4qtx" path="res://ball.tscn" id="2_30fga"]
-[ext_resource type="Script" path="res://camera.gd" id="2_mejns"]
+[ext_resource type="Script" uid="uid://dtfeye8fluu2d" path="res://camera.gd" id="2_mejns"]
 [ext_resource type="Texture2D" uid="uid://cj4t24uayjkdo" path="res://3dmodels/Kiki/kiki1_LF_Kiki.png" id="3_7yf6o"]
 [ext_resource type="AudioStream" uid="uid://bp2mw4pt02g2x" path="res://sounds/burst_up.wav" id="3_j7cvp"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_eules"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_pae1d"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_ifq1k"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_mxtws"]
-[ext_resource type="Script" path="res://help.gd" id="10_xevij"]
+[ext_resource type="Script" uid="uid://flyn08i6h0q7" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_eules"]
+[ext_resource type="Script" uid="uid://din12ipgpa7tk" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_pae1d"]
+[ext_resource type="Script" uid="uid://coo4p104pqgs2" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_ifq1k"]
+[ext_resource type="Script" uid="uid://dqh644fr0xh0f" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_mxtws"]
+[ext_resource type="Script" uid="uid://dbvagjamnjp3r" path="res://help.gd" id="10_xevij"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i87wt"]
 resource_name = "Kiki_TEX"
@@ -939,10 +939,10 @@ tracks/27/keys = PackedFloat32Array(0, 1, 1.00001, 1.00001, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08r0w"]
 _data = {
-"Idle": SubResource("Animation_wopra"),
-"RESET": SubResource("Animation_46ip6"),
-"Shot": SubResource("Animation_xhjgt"),
-"SideStep": SubResource("Animation_cu02o")
+&"Idle": SubResource("Animation_wopra"),
+&"RESET": SubResource("Animation_46ip6"),
+&"Shot": SubResource("Animation_xhjgt"),
+&"SideStep": SubResource("Animation_cu02o")
 }
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0i0c6"]
@@ -1129,7 +1129,7 @@ skin = SubResource("Skin_kuaia")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spatial/kiki1"]
 libraries = {
-"": SubResource("AnimationLibrary_08r0w")
+&"": SubResource("AnimationLibrary_08r0w")
 }
 
 [node name="Caddie" type="MeshInstance3D" parent="."]
@@ -1141,7 +1141,6 @@ transform = Transform3D(1.37765e-15, -3.15169e-08, -0.721022, -0.721022, -3.1516
 mesh = SubResource("PrismMesh_reu6m")
 
 [node name="Camera" type="Camera3D" parent="."]
-physics_interpolation_mode = 2
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 1, -2.10407)
 fov = 60.0
 script = ExtResource("2_mejns")

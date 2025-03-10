@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cwf3k46lh4qtx"]
 
-[ext_resource type="Script" path="res://ball.gd" id="1_ddjtr"]
-[ext_resource type="Shader" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="2_l0qi5"]
-[ext_resource type="Shader" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="3_dac37"]
+[ext_resource type="Script" uid="uid://cia8pk6gwv0ps" path="res://ball.gd" id="1_ddjtr"]
+[ext_resource type="Shader" uid="uid://bhlsdb34wyv2" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="2_l0qi5"]
+[ext_resource type="Shader" uid="uid://bxqmffxu5iqdc" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="3_dac37"]
 [ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="4_ylvwo"]
 [ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://addons/GPUTrail-main/defaults/curve.tres" id="5_vi0mw"]
-[ext_resource type="Script" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="6_tljrf"]
+[ext_resource type="Script" uid="uid://i67st6amu0ab" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="6_tljrf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rtrnl"]
 bounce = 0.1
@@ -25,10 +25,10 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_dac37")
 shader_parameter/uv_offset = Vector2(0.0183525, 0)
-shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-shader_parameter/flags = 4
 shader_parameter/color_ramp = ExtResource("4_ylvwo")
 shader_parameter/curve = ExtResource("5_vi0mw")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 4
 
 [sub_resource type="QuadMesh" id="QuadMesh_7mg8n"]
 material = SubResource("ShaderMaterial_jtqgs")

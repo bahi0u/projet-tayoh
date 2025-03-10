@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://n8qpccxw38xa"]
 
-[ext_resource type="PackedScene" uid="uid://big06lj0bgf0r" path="res://3dmodels/Spika/Spika.glb" id="1_8ej8g"]
+[sub_resource type="Resource" id="Resource_7fsrr"]
+metadata/__load_path__ = "res://3dmodels/Spika/Spika.glb"
 
-[node name="Spika2" instance=ExtResource("1_8ej8g")]
+[node name="Spika2"]
 
 [node name="Spika" parent="." index="0"]
 visible = false

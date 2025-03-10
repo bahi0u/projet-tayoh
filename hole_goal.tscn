@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw378kg5d0r8f"]
 
-[ext_resource type="Script" path="res://hole_goal.gd" id="1_6n7ai"]
+[ext_resource type="Script" uid="uid://ci51ybw2mlobd" path="res://hole_goal.gd" id="1_6n7ai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy8hg"]
 transparency = 1

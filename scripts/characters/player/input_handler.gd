@@ -12,12 +12,12 @@ var value: float = 0
 var rotation_speed: float = 0.0
 var max_speed = 200
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if Input.is_action_pressed("up"):
 		camera.rotation.x -= 0.0089
 		camera.position.y += 0.31
-		player.state = DRONE
+		player.state = player.States.DRONE
 		
 	if Input.is_action_pressed("down"):
 		camera.rotation.x += 0.0089
@@ -41,7 +41,7 @@ func _physics_process(delta):
 	rotation_speed = value / 10000 #Get the value into 0.2 form so its not too speedy
 	player.rotation.y += rotation_speed 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_released("left"):
 		value = 0
 	elif Input.is_action_just_released("right"):

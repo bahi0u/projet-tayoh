@@ -1,6 +1,4 @@
 extends CharacterBody3D
-#
-
 
 enum States {IDLE,DRONE,AIMING}
 

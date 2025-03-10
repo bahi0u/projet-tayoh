@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://b0g45651r3fgm"]
 
-[ext_resource type="Script" path="res://ui.gd" id="1_e2lb5"]
-[ext_resource type="Script" path="res://charge.gd" id="2_1p5c3"]
-[ext_resource type="Script" path="res://cursor_trail.gd" id="2_mxhv7"]
+[ext_resource type="Script" uid="uid://cnf26ps28lgj3" path="res://ui.gd" id="1_e2lb5"]
+[ext_resource type="Script" uid="uid://b223fefwqujk" path="res://charge.gd" id="2_1p5c3"]
+[ext_resource type="Script" uid="uid://b585os0ap643h" path="res://cursor_trail.gd" id="2_mxhv7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sovn3"]
 blend_mode = 3
