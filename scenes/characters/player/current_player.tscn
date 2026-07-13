@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0c6xpv6two1p"]
+[gd_scene format=3 uid="uid://0c6xpv6two1p"]
 
 [ext_resource type="Script" uid="uid://i1x0cc01xb6k" path="res://scripts/characters/player/current_player.gd" id="1_5vt0o"]
 [ext_resource type="Script" uid="uid://cr5xno60np6sm" path="res://scripts/characters/player/input_handler.gd" id="2_ef2oe"]
@@ -10,39 +10,36 @@
 
 [sub_resource type="Resource" id="Resource_swlbl"]
 script = ExtResource("7_cbd7d")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_10sle"]
 
-[node name="CurrentPlayer" type="CharacterBody3D"]
+[node name="CurrentPlayer" type="CharacterBody3D" unique_id=469673099]
 script = ExtResource("1_5vt0o")
 
-[node name="PlayerStats" type="Node" parent="."]
+[node name="PlayerStats" type="Node" parent="." unique_id=1147772653]
 
-[node name="InputHandler" type="Node" parent="."]
+[node name="InputHandler" type="Node" parent="." unique_id=1132675742]
 script = ExtResource("2_ef2oe")
 
-[node name="PlayerProfile" type="Node" parent="."]
+[node name="PlayerProfile" type="Node" parent="." unique_id=1518099247]
 
-[node name="PlayerMesh" type="Node3D" parent="."]
+[node name="PlayerMesh" type="Node3D" parent="." unique_id=356260518]
 script = ExtResource("2_tsfkb")
 current_mesh = ExtResource("4_h22x5")
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
+[node name="PlayerCamera" type="Camera3D" parent="." unique_id=2087955756]
 physics_interpolation_mode = 1
 current = true
 fov = 60.0
 
-[node name="PhantomCameraHost" type="Node" parent="PlayerCamera"]
+[node name="PhantomCameraHost" type="Node" parent="PlayerCamera" unique_id=1123058763]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("3_p5pvm")
 
-[node name="PhantomCamera3D" type="Node3D" parent="."]
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1495168522]
 script = ExtResource("6_c7qx6")
 tween_resource = SubResource("Resource_swlbl")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=520101737]
 shape = SubResource("SphereShape3D_10sle")
